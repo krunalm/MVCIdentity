@@ -1,0 +1,45 @@
+﻿@model MVCIdentity.Models.Identity.Login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.Username)</td>
+                <td>@Html.EditorFor(m => m.Username)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.EditorFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.RememberMe)</td>
+                <td>@Html.EditorFor(m => m.RememberMe)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Login" /></td>
+            </tr>
+        </table>
+    }
+
+    @Html.ValidationSummary()
+
+    <br /><br />
+    @Html.ActionLink("Register a new account !", "Register", "Account")
+</body>
+
+</html>

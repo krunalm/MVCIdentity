@@ -1,0 +1,43 @@
+﻿@model MVCIdentity.Models.Identity.ChangeProfile
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Modify Profile</title>
+</head>
+<body>
+    <h1>Modify Profile</h1>
+    @using (Html.BeginForm("ChangeProfile", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.FullName)</td>
+                <td>@Html.EditorFor(m => m.FullName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.BirthDate)</td>
+                <td>@Html.EditorFor(m => m.BirthDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Bio)</td>
+                <td>@Html.TextAreaFor(m => m.Bio)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Change Profile" /></td>
+            </tr>
+        </table>
+    }
+
+    @ViewBag.Message
+    @Html.ValidationSummary()
+</body>
+
+</html>

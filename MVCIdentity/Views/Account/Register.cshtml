@@ -1,0 +1,58 @@
+﻿@model MVCIdentity.Models.Identity.Register
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.Username)</td>
+                <td>@Html.EditorFor(m => m.Username)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.PasswordFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.ConfirmPassword)</td>
+                <td>@Html.PasswordFor(m => m.ConfirmPassword)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Email)</td>
+                <td>@Html.EditorFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Fullname)</td>
+                <td>@Html.EditorFor(m => m.Fullname)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.BirthDate)</td>
+                <td>@Html.EditorFor(m => m.BirthDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Bio)</td>
+                <td>@Html.TextAreaFor(m => m.Bio)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" name="submit" value="Register" /></td>
+            </tr>
+        </table>
+    }
+    @Html.ValidationSummary()
+</body>
+
+</html>
